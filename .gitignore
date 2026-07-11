@@ -1,0 +1,24 @@
+# Generated images and packages
+*.iso
+*.img
+*.qcow2
+*.raw
+*.tar
+*.tar.gz
+*.tar.xz
+*.tbz2
+*.pkg.tar.*
+
+# Build output and caches
+build/
+out/
+artifacts/
+distfiles/
+binpkgs/
+
+# Unsanitized local hardware captures
+hardware-inventory/
+
+# Local environment
+.env
+.DS_Store
