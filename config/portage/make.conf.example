@@ -1,0 +1,38 @@
+# EmotionalOS Gentoo bootstrap configuration
+#
+# Copy intentionally. Review every setting against the selected Gentoo profile,
+# available build resources, and the verified target machine.
+
+COMMON_FLAGS="-O2 -pipe"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
+# Keep parallelism modest for compatibility with local development and shared CI.
+# Override through the build environment when more resources are available.
+MAKEOPTS="-j2"
+EMERGE_DEFAULT_OPTS="--ask --verbose --with-bdeps=y --complete-graph=y"
+
+# Binary packages are central to the project build strategy.
+FEATURES="buildpkg binpkg-request-signature"
+PKGDIR="/var/cache/binpkgs"
+DISTDIR="/var/cache/distfiles"
+
+# A final mirror strategy and binary-package host are intentionally undecided.
+# GENTOO_MIRRORS=""
+# PORTAGE_BINHOST=""
+
+# License policy must be explicit rather than globally permissive.
+ACCEPT_LICENSE="@FREE @BINARY-REDISTRIBUTABLE"
+
+# Localization baseline; expand only when required.
+LINGUAS="en en-US"
+L10N="en en-US"
+
+# Initial target is a modern UEFI x86-64 laptop.
+GRUB_PLATFORMS="efi-64"
+
+# Do not set -march=native in shared configuration. Binary packages built with
+# machine-specific flags may fail on another system. Add a verified Broadwell
+# package profile later if the project intentionally adopts that baseline.
